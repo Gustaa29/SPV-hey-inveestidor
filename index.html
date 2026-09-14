@@ -393,48 +393,6 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:45px 0 30px}
   </div>
 </section>
 
-<!-- VIDEO -->
-<div class="video-frame">
-  <div id="player"></div>
-</div>
-
-<script>
-  let player;
-  let intervalo;
-
-  // Carrega a API do YouTube
-  const tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
-
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player("player", {
-      videoId: "bS0DDO31jUU",
-
-      playerVars: {
-        autoplay: 0,
-        controls: 1,
-        rel: 0,
-        modestbranding: 1
-      },
-
-      events: {
-        onReady: function(event) {
-          intervalo = setInterval(() => {
-            if (!player || !player.getCurrentTime) return;
-
-            const tempo = player.getCurrentTime();
-
-            if (tempo >= 25) {
-              player.pauseVideo();
-              player.seekTo(25, true);
-            }
-          }, 200);
-        }
-      }
-    });
-  }
-</script>
 
 <!-- BENEFÍCIOS -->
 <section class="section dark" id="beneficios">
